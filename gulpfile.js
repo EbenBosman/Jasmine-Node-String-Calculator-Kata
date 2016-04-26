@@ -51,7 +51,7 @@ gulp.task('default', ['watch']);
 function GetDateTimeStamp() {
     var now = new Date();
 
-    var date = [now.getFullYear(), now.getDate(), now.getMonth() + 1,];
+    var date = [now.getFullYear(), now.getDate(), now.getMonth() + 1];
     var time = [now.getHours(), now.getMinutes(), now.getSeconds()];
 
     var suffix = ( time[0] < 12 ) ? "AM" : "PM";
@@ -65,5 +65,5 @@ function GetDateTimeStamp() {
         }
     }
 
-    return date.join(".") + "_" + time.join(".") + " " + suffix;
+    return date.join(".") + "_" + time.join(".") + "_" + suffix;
 }
