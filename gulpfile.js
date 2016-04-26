@@ -6,17 +6,17 @@ var gulp = require('gulp'),
 var dateTimeStamp = GetDateTimeStamp();
 
 gulp.task('archive-test', function () {
-    return gulp.src(['./spec/calculator-spec.js'])
+    return gulp.src('./spec/calculator-spec.js')
         .pipe(gulp.dest('./archive/' + dateTimeStamp + '/spec'));
 });
 
 gulp.task('archive-implementation', function () {
-    return gulp.src(['calculator.js'])
-        .pipe(gulp.dest('./archive/' + dateTimeStamp));
+    return gulp.src('./implementation/calculator.js')
+        .pipe(gulp.dest('./archive/' + dateTimeStamp + '/implementation'));
 });
 
 gulp.task('clean', function () {
-    return gulp.src(['./calculator.js', './spec/calculator-spec.js'])
+    return gulp.src(['./implementation/calculator.js', './spec/calculator-spec.js'])
         .pipe(clean({force: true}));
 });
 
@@ -26,21 +26,21 @@ gulp.task('refresh-test', function () {
 });
 
 gulp.task('refresh-implementation', function () {
-    return gulp.src(['./src/calculator.js'])
-        .pipe(gulp.dest('./'));
+    return gulp.src(['./src/implementation/calculator.js'])
+        .pipe(gulp.dest('./implementation/'));
 });
 
 gulp.task('refresh', function (callback) {
-    runSequence('archive-implementation', 'archive-test', 'clean', 'refresh-test', 'refresh-implementation', callback)
+    return runSequence('archive-implementation', 'archive-test', 'clean', 'refresh-test', 'refresh-implementation', callback)
 });
 
 gulp.task('jasmine', function() {
-    gulp.src('./spec/calculator-spec.js')
+    return gulp.src('./spec/calculator-spec.js')
         .pipe(jasmine())
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['./spec/calculator-spec.js', 'calculator.js'], ['jasmine']);
+    return gulp.watch(['./spec/calculator-spec.js', './implementation/calculator.js'], ['jasmine']);
 });
 
 gulp.task('default', ['watch']);
@@ -62,5 +62,5 @@ function GetDateTimeStamp() {
         }
     }
 
-    return date.join(".") + " " + time.join(":") + " " + suffix;
+    return date.join(".") + "_" + time.join(".") + " " + suffix;
 }
