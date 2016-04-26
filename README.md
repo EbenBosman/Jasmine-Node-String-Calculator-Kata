@@ -18,7 +18,7 @@ $ npm install
 
 #### 1. Start the default gulp process
 
-__This will start a watch on the `.\spec\calculator-spec.js` & `.\calculator.js` files. Any changes you make to these files will be picked and cause the `jasmine-node` tests to be executed.__
+__This will start a watch on the `.\spec\calculator-spec.js` & `.\implementation\calculator.js` files. Any changes you make to these files will be picked and cause the `jasmine-node` tests to be executed.__
 
 ```sh
 $ gulp
@@ -26,7 +26,7 @@ $ gulp
 
 #### 2. Follow the test as listed below.
 
-__Write a test first in the `.\spec\calculator-spec.js` file, watch your test fail, then write the implementation in `.\calculator.js`. Rinse and repeat.__
+__Write a test first in the `.\spec\calculator-spec.js` file, watch your test fail, then write the implementation in `.\implementation\calculator.js`. Rinse and repeat.__
 
 #### 3. Stop after 15 minutes. 
 
