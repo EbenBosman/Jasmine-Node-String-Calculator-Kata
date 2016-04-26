@@ -45,6 +45,9 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['watch']);
 
+/**
+ * @return {string}
+ */
 function GetDateTimeStamp() {
     var now = new Date();
 
